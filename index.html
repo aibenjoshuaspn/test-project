@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Docs</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root { color-scheme: light dark; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    /* Syntax highlighting colors */
+    .code-keyword { color: #d73a49; }
+    .code-string { color: #032f62; }
+    .code-comment { color: #6a737d; }
+    .code-function { color: #6f42c1; }
+    .code-number { color: #005cc5; }
+    @media (prefers-color-scheme: dark) {
+      .code-string { color: #9ecbff; }
+      .code-keyword { color: #ff7b72; }
+      .code-comment { color: #8b949e; }
+      .code-function { color: #d2a8ff; }
+      .code-number { color: #79c0ff; }
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold">D</div>
+        <a href="#" class="text-lg font-semibold tracking-tight">Docs</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <button id="searchToggle" aria-label="Search" class="p-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1 0 6.6 6.6a7.5 7.5 0 0 0 10.05 10.05z"/></svg>
+        </button>
+        <a href="https://github.com" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-2 text-sm font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 lg:grid-cols-[16rem_1fr] gap-8">
+    <!-- Sidebar -->
+    <aside class="hidden lg:block">
+      <nav class="sticky top-24 space-y-8 text-sm">
+        <div>
+          <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Introduction</p>
+          <ul class="space-y-1 border-l border-slate-200 dark:border-slate-800">
+            <li><a href="#getting-started" class="block pl-4 -ml-px border-l-2 border-transparent hover:border-indigo-500 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition">Getting started</a></li>
+            <li><a href="#installation" class="block pl-4 -ml-px border-l-2 border-transparent hover:border-indigo-500 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition">Installation</a></li>
+            <li><a href="#configuration" class="block pl-4 -ml-px border-l-2 border-transparent hover:border-indigo-500 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition">Configuration</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Usage</p>
+          <ul class="space-y-1 border-l border-slate-200 dark:border-slate-800">
+            <li><a href="#quick-start" class="block pl-4 -ml-px border-l-2 border-transparent hover:border-indigo-500 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition">Quick start</a></li>
+            <li><a href="#api-reference" class="block pl-4 -ml-px border-l-2 border-transparent hover:border-indigo-500 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition">API reference</a></li>
+            <li><a href="#examples" class="block pl-4 -ml-px border-l-2 border-transparent hover:border-indigo-500 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition">Examples</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Help</p>
+          <ul class="space-y-1 border-l border-slate-200 dark:border-slate-800">
+            <li><a href="#faq" class="block pl-4 -ml-px border-l-2 border-transparent hover:border-indigo-500 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition">FAQ</a></li>
+            <li><a href="#troubleshooting" class="block pl-4 -ml-px border-l-2 border-transparent hover:border-indigo-500 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition">Troubleshooting</a></li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main class="prose dark:prose-invert max-w-none">
+      <div class="mb-10">
+        <h1 class="text-4xl font-extrabold tracking-tight mb-4">Project Documentation</h1>
+        <p class="text-lg text-slate-600 dark:text-slate-300">A clean, fast, and simple documentation site for your GitHub Pages project. Everything you need to get started in one place.</p>
+      </div>
+
+      <section id="getting-started" class="scroll-mt-24 mb-12">
+        <h2 class="text-2xl font-bold mb-3">Getting started</h2>
+        <p class="mb-4 text-slate-600 dark:text-slate-300">Welcome! This template is designed to be a drop-in documentation page for any open-source project. It is built with vanilla HTML and Tailwind CSS, so it works out of the box on GitHub Pages.</p>
+        <div class="not-prose p-4 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-100 dark:border-indigo-900/40">
+          <p class="text-sm text-indigo-900 dark:text-indigo-200"><strong>Tip:</strong> Edit the sections below directly in <code class="bg-white dark:bg-slate-800 px-1 py-0.5 rounded text-xs">index.html</code> to match your project.</p>
+        </div>
+      </section>
+
+      <section id="installation" class="scroll-mt-24 mb-12">
+        <h2 class="text-2xl font-bold mb-3">Installation</h2>
+        <p class="mb-4 text-slate-600 dark:text-slate-300">Install the package using your favorite package manager.</p>
+        <div class="rounded-lg bg-slate-900 text-slate-50 p-4 overflow-x-auto text-sm font-mono leading-relaxed">
+          <pre><code><span class="code-comment"># npm</span>
+<span class="code-keyword">npm</span> install your-package
+
+<span class="code-comment"># yarn</span>
+<span class="code-keyword">yarn</span> add your-package
+
+<span class="code-comment"># pnpm</span>
+<span class="code-keyword">pnpm</span> add your-package</code></pre>
+        </div>
+      </section>
+
+      <section id="configuration" class="scroll-mt-24 mb-12">
+        <h2 class="text-2xl font-bold mb-3">Configuration</h2>
+        <p class="mb-4 text-slate-600 dark:text-slate-300">Create a config file in the root of your project.</p>
+        <div class="rounded-lg bg-slate-900 text-slate-50 p-4 overflow-x-auto text-sm font-mono leading-relaxed">
+          <pre><code><span class="code-comment">// docs.config.js</span>
+<span class="code-keyword">export default</span> {
+  <span class="code-function">title</span>: <span class="code-string">'My Project'</span>,
+  <span class="code-function">description</span>: <span class="code-string">'A short description'</span>,
+  <span class="code-function">theme</span>: <span class="code-string">'system'</span>,
+};</code></pre>
+        </div>
+      </section>
+
+      <section id="quick-start" class="scroll-mt-24 mb-12">
+        <h2 class="text-2xl font-bold mb-3">Quick start</h2>
+        <p class="mb-4 text-slate-600 dark:text-slate-300">Import and initialize the library in your application entry point.</p>
+        <div class="rounded-lg bg-slate-900 text-slate-50 p-4 overflow-x-auto text-sm font-mono leading-relaxed">
+          <pre><code><span class="code-keyword">import</span> { createApp } <span class="code-keyword">from</span> <span class="code-string">'your-package'</span>;
+
+<span class="code-keyword">const</span> app = <span class="code-function">createApp</span>({
+  <span class="code-function">apiKey</span>: <span class="code-string">'your-api-key'</span>,
+  <span class="code-function">debug</span>: <span class="code-keyword">true</span>,
+});
+
+app.<span class="code-function">start</span>();</code></pre>
+        </div>
+      </section>
+
+      <section id="api-reference" class="scroll-mt-24 mb-12">
+        <h2 class="text-2xl font-bold mb-3">API reference</h2>
+        <p class="mb-4 text-slate-600 dark:text-slate-300">The main methods exposed by the library.</p>
+        <div class="overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-800">
+          <table class="w-full text-sm text-left">
+            <thead class="bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold">
+              <tr>
+                <th class="px-4 py-3">Method</th>
+                <th class="px-4 py-3">Parameters</th>
+                <th class="px-4 py-3">Returns</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+              <tr>
+                <td class="px-4 py-3 font-mono text-indigo-600 dark:text-indigo-400">createApp(options)</td>
+                <td class="px-4 py-3"><code class="text-xs">options: object</code></td>
+                <td class="px-4 py-3">App instance</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-mono text-indigo-600 dark:text-indigo-400">app.start()</td>
+                <td class="px-4 py-3">—</td>
+                <td class="px-4 py-3">Promise&lt;void&gt;</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-mono text-indigo-600 dark:text-indigo-400">app.stop()</td>
+                <td class="px-4 py-3">—</td>
+                <td class="px-4 py-3">void</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="examples" class="scroll-mt-24 mb-12">
+        <h2 class="text-2xl font-bold mb-3">Examples</h2>
+        <p class="mb-4 text-slate-600 dark:text-slate-300">A few common usage patterns.</p>
+        <ul class="list-disc pl-5 space-y-2 text-slate-600 dark:text-slate-300">
+          <li><a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">Basic setup</a></li>
+          <li><a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">Custom middleware</a></li>
+          <li><a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">Deploying to GitHub Pages</a></li>
+        </ul>
+      </section>
+
+      <section id="faq" class="scroll-mt-24 mb-12">
+        <h2 class="text-2xl font-bold mb-3">FAQ</h2>
+        <div class="space-y-4">
+          <details class="group rounded-lg border border-slate-200 dark:border-slate-800 open:bg-slate-50 dark:open:bg-slate-800/50 transition">
+            <summary class="cursor-pointer list-none p-4 font-medium flex items-center justify-between">
+              Can I customize the theme?
+              <svg class="w-4 h-4 transition group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="px-4 pb-4 text-slate-600 dark:text-slate-300">Yes. The page uses Tailwind CSS classes and respects the user's system color scheme. You can override styles in the inline <code class="text-xs">&lt;style&gt;</code> block.</p>
+          </details>
+          <details class="group rounded-lg border border-slate-200 dark:border-slate-800 open:bg-slate-50 dark:open:bg-slate-800/50 transition">
+            <summary class="cursor-pointer list-none p-4 font-medium flex items-center justify-between">
+              Is search enabled?
+              <svg class="w-4 h-4 transition group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="px-4 pb-4 text-slate-600 dark:text-slate-300">The header includes a search button as a placeholder. You can wire it to a search index or a third-party service like Algolia DocSearch.</p>
+          </details>
+        </div>
+      </section>
+
+      <section id="troubleshooting" class="scroll-mt-24 mb-12">
+        <h2 class="text-2xl font-bold mb-3">Troubleshooting</h2>
+        <p class="mb-4 text-slate-600 dark:text-slate-300">If something isn't working, try these steps:</p>
+        <ol class="list-decimal pl-5 space-y-2 text-slate-600 dark:text-slate-300">
+          <li>Check that you are on the latest version.</li>
+          <li>Clear your browser cache and reload.</li>
+          <li>Review the console for error messages.</li>
+          <li>Open an issue on <a href="https://github.com" class="text-indigo-600 dark:text-indigo-400 hover:underline">GitHub</a>.</li>
+        </ol>
+      </section>
+
+      <footer class="pt-10 mt-10 border-t border-slate-200 dark:border-slate-800 text-sm text-slate-500 dark:text-slate-400">
+        <p>&copy; <span id="year"></span> Your Project. Released under the MIT License.</p>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Mobile nav toggle -->
+  <button id="mobileNavToggle" aria-label="Open navigation" class="lg:hidden fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-indigo-600 text-white shadow-lg flex items-center justify-center hover:bg-indigo-700 transition">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+  </button>
+
+  <!-- Mobile nav drawer -->
+  <div id="mobileNav" class="fixed inset-0 z-40 hidden" role="dialog" aria-modal="true">
+    <div id="mobileNavBackdrop" class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-64 bg-white dark:bg-slate-900 shadow-2xl p-6">
+      <button id="mobileNavClose" aria-label="Close navigation" class="mb-6 p-2 -mr-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <nav class="space-y-6 text-sm">
+        <div>
+          <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Introduction</p>
+          <ul class="space-y-2">
+            <li><a href="#getting-started" class="mobile-link block text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Getting started</a></li>
+            <li><a href="#installation" class="mobile-link block text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Installation</a></li>
+            <li><a href="#configuration" class="mobile-link block text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Configuration</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Usage</p>
+          <ul class="space-y-2">
+            <li><a href="#quick-start" class="mobile-link block text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Quick start</a></li>
+            <li><a href="#api-reference" class="mobile-link block text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">API reference</a></li>
+            <li><a href="#examples" class="mobile-link block text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Examples</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Help</p>
+          <ul class="space-y-2">
+            <li><a href="#faq" class="mobile-link block text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">FAQ</a></li>
+            <li><a href="#troubleshooting" class="mobile-link block text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Troubleshooting</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Search modal -->
+  <div id="searchModal" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true">
+    <div id="searchBackdrop" class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm"></div>
+    <div class="absolute inset-x-0 top-24 mx-auto max-w-2xl px-4">
+      <div class="bg-white dark:bg-slate-900 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+        <div class="flex items-center gap-3 px-4 py-3 border-b border-slate-200 dark:border-slate-800">
+          <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1 0 6.6 6.6a7.5 7.5 0 0 0 10.05 10.05z"/></svg>
+          <input id="searchInput" type="text" placeholder="Search documentation..." class="flex-1 bg-transparent outline-none text-slate-900 dark:text-slate-100 placeholder:text-slate-400">
+          <button id="searchClose" class="text-xs font-medium text-slate-500 hover:text-slate-800 dark:hover:text-slate-200">ESC</button>
+        </div>
+        <div id="searchResults" class="max-h-80 overflow-y-auto p-2">
+          <p class="px-3 py-4 text-sm text-slate-500">Type to search headings...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Update copyright year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile navigation
+    const mobileNavToggle = document.getElementById('mobileNavToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileNavClose = document.getElementById('mobileNavClose');
+    const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    function openMobileNav() {
+      mobileNav.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+    }
+    function closeMobileNav() {
+      mobileNav.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    mobileNavToggle.addEventListener('click', openMobileNav);
+    mobileNavClose.addEventListener('click', closeMobileNav);
+    mobileNavBackdrop.addEventListener('click', closeMobileNav);
+    mobileLinks.forEach(link => link.addEventListener('click', closeMobileNav));
+
+    // Search modal
+    const searchToggle = document.getElementById('searchToggle');
+    const searchModal = document.getElementById('searchModal');
+    const searchBackdrop = document.getElementById('searchBackdrop');
+    const searchClose = document.getElementById('searchClose');
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+
+    const headings = Array.from(document.querySelectorAll('main section[id] h2')).map(h => ({
+      id: h.closest('section').id,
+      text: h.textContent.trim(),
+    }));
+
+    function openSearch() {
+      searchModal.classList.remove('hidden');
+      searchInput.value = '';
+      searchInput.focus();
+      renderResults('');
+    }
+    function closeSearch() {
+      searchModal.classList.add('hidden');
+    }
+
+    function renderResults(query) {
+      const q = query.trim().toLowerCase();
+      const matches = q ? headings.filter(h => h.text.toLowerCase().includes(q)) : headings;
+      if (matches.length === 0) {
+        searchResults.innerHTML = '<p class="px-3 py-4 text-sm text-slate-500">No results found.</p>';
+        return;
+      }
+      searchResults.innerHTML = matches.map(h => `
+        <a href="#${h.id}" class="search-result block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <p class="text-sm font-medium text-slate-900 dark:text-slate-100">${escapeHtml(h.text)}</p>
+          <p class="text-xs text-slate-500">#${h.id}</p>
+        </a>
+      `).join('');
+      document.querySelectorAll('.search-result').forEach(link => {
+        link.addEventListener('click', closeSearch);
+      });
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    searchToggle.addEventListener('click', openSearch);
+    searchClose.addEventListener('click', closeSearch);
+    searchBackdrop.addEventListener('click', closeSearch);
+    searchInput.addEventListener('input', e => renderResults(e.target.value));
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        closeSearch();
+        closeMobileNav();
+      }
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        openSearch();
+      }
+    });
+  </script>
+</body>
+</html>
